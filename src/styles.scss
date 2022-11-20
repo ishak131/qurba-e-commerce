@@ -22,28 +22,29 @@ body {
 }
 
 
-input {
-    box-sizing: border-box;
-    padding: 10px 14px;
-    max-width: 360px;
-    width: 100%;
-    height: 44px;
-    background: #FFFFFF;
-    border: 1px solid #D0D5DD;
-    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
-    border-radius: 8px;
-    margin: 6px 0 20px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    color: #667085;
+form {
+    input {
+        box-sizing: border-box;
+        padding: 10px 14px;
+        max-width: 360px;
+        width: 100%;
+        height: 44px;
+        background: #FFFFFF;
+        border: 1px solid #D0D5DD;
+        box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+        border-radius: 8px;
+        margin: 6px 0 20px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 24px;
+        color: #667085;
 
-    &[type="submit"] {
-        background-color: $primary-color;
-        color: #344054;
+        &[type="submit"] {
+            background-color: $primary-color;
+            color: #344054;
+        }
     }
 }
-
 
 
 label {
@@ -58,9 +59,21 @@ form {
     max-width: 360px;
 }
 
+input[type="checkbox"]{
+    height: 14px;
+    width: 14px;
+    margin: 0;
+}
+input:checked {
+    accent-color: $primary-color;
+   
+}
+
 .main-content {
+    margin: auto;
     padding: 0 112px;
     min-height: calc(100vh - 81px - 128px);
+    max-width: calc(1440px - (112px * 2));
 }
 
 .heading_1 {
@@ -71,11 +84,7 @@ form {
 
 .heading_2 {}
 
-.heading_3 {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 24px;
-}
+.heading_3 {}
 
 .heading_4 {
     font-size: 16px;

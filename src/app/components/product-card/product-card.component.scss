@@ -1,0 +1,150 @@
+@import "../../../styles";
+
+.product-card {
+    height: 580px;
+    width: 282px;
+    background: #FFFFFF;
+    border: 0.5px solid rgba(66, 66, 66, .3);
+    border-radius: 8px;
+
+    .cover {
+        height: 257px;
+        width: 282px;
+        background-image: url('/assets/iphone.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        border-radius: 8px;
+        padding: 12px;
+        box-sizing: border-box;
+
+        small {
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 15px;
+            background-color: $primary-color;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    }
+
+    .product-details {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .product-title {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 24px;
+            color: #344054;
+            margin: 0;
+        }
+
+        .product-description {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 17px;
+        }
+
+        .priceing {
+            margin: 16px 0 12px;
+        }
+
+        .priceing,
+        .info {
+            color: #344054;
+
+            small {
+                margin-right: 16px;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 17px;
+
+                strong {
+                    font-weight: 700;
+                }
+            }
+
+            small.price-before-discount {
+                text-decoration: line-through;
+            }
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            strong {
+                margin-left: 8px;
+
+            }
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+            margin-bottom: 7px;
+
+            .star {
+
+                height: 17px;
+                width: 17px;
+                display: block;
+                background-image: url('/assets/gray-star.png');
+
+                span {
+
+                    height: 17px;
+                    width: calc(17px * (2.1/5));
+                    display: block;
+                    background-image: url('/assets/yellow-star.png');
+
+                }
+            }
+
+            .rate-out-of-five {
+
+                font-family: 'Open Sans';
+                font-size: 16px;
+                font-weight: 700;
+                line-height: 22px;
+                color: #F4B000;
+                margin: 0 7px 0 3px;
+            }
+
+            .reviews-number {
+                font-family: 'Open Sans';
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 22px;
+                color: #1E1E1E;
+                opacity: .5;
+            }
+
+        }
+
+        .add-to-cart {
+            width: 100%;
+            height: 50px;
+            background-color: $primary-color;
+            color: #344054;
+            border-radius: 4px;
+            font-family: 'Open Sans';
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 22px;
+            text-align: center;
+            border: none;
+        }
+
+    }
+
+
+
+}
