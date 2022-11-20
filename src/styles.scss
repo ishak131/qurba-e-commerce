@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+$primary-color: #56D9D9;
+$secondary-color: #1D2939;
+
+$primary-font-family: 'Inter', sans-serif;
+$secondary-font-family: 'Open Sans', sans-serif;
+
+* {
+    font-family: $primary-font-family;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    margin: 0;
+}
+
+
+input {
+    box-sizing: border-box;
+    padding: 10px 14px;
+    max-width: 360px;
+    width: 100%;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #D0D5DD;
+    box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+    border-radius: 8px;
+    margin: 6px 0 20px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #667085;
+
+    &[type="submit"] {
+        background-color: $primary-color;
+        color: #344054;
+    }
+}
+
+
+
+label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    color: #344054;
+
+}
+
+form {
+    max-width: 360px;
+}
+
+.main-content {
+    padding: 0 112px;
+    min-height: calc(100vh - 81px - 128px);
+}
+
+.heading_1 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 39px;
+}
+
+.heading_2 {}
+
+.heading_3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.heading_4 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+}

@@ -1,0 +1,31 @@
+<header>
+    
+    <a routerLink="" class="logo">
+        <img src="/assets/header_and_footer_logo.png" />
+        <small class="header_link">
+            ClickTik
+        </small>
+    </a>
+
+    <nav class="nav-links">
+        <a routerLink="" class="header_link">
+            Home
+        </a>
+        <a routerLink="products" class="header_link">
+            products
+        </a>
+    </nav>
+
+    <a *ngIf="!(isLoggedIn$ | async)" routerLink="login" class="header_link">
+        Log in
+    </a>
+
+    <div class="authenticated-options" *ngIf="isLoggedIn$ | async">
+        <app-search></app-search>
+        <app-cart></app-cart>
+        <a routerLink="products" class="header_link">
+            Account
+        </a>
+    </div>
+
+</header>

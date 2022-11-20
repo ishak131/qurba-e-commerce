@@ -1,0 +1,23 @@
+<section class="login">
+    <img src="/assets/login_logo.png" />
+    <h1>
+        Log in to your account
+    </h1>
+    <p>
+        Welcome back! Please enter your details.
+    </p>
+    <form method="post" (ngSubmit)="login()">
+        <label for="email">
+            Email
+        </label>
+        <!-- here we are not able to use email type with this input because the api request need username not email but in the same time 
+        the UI/UX design say it is email so we need to change on of them to meet the other  -->
+        <input [(ngModel)]="email" placeholder="Enter yout email" name="email" />
+        <label for="password">
+            Password
+        </label>
+        <input [(ngModel)]="password" placeholder="Enter your password" name="password" type="password" />
+
+        <input type="submit"  value="Sign in" />
+    </form>
+</section>

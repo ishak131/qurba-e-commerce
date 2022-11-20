@@ -1,0 +1,42 @@
+header {
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 80px;
+    border-bottom: .5px solid #424242;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+    }
+
+    .nav-links {
+        margin-left: 80px;
+        margin-right: auto;
+        display: flex;
+        gap: 80px;
+    }
+
+    .header_link {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+    }
+
+    a.header_link {
+        color: #667085;
+    }
+
+    small.header_link {
+        color: #000;
+    }
+
+    .authenticated-options{
+        display: flex;
+        align-items: center;
+        
+    }
+
+}
