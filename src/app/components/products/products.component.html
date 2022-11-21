@@ -2,28 +2,27 @@
 <p class="breadcrumb">Home / Products / Smart Phones / <strong>iPhone</strong></p>
 <div class="products">
     <section class="filter">
-        <h4>Products</h4>
+        {{limit$}}
+        <h4>Products </h4>
         <div class="categories">
-            <div class="checkbox">
-                <input value="" type="checkbox" />
-                <label> Smartphones (9) </label>
+            <div class="checkbox" *ngFor="let category of categories$;">
+                <input (change)="onCheckBoxChange($event)" name="category" id="{{category}}" value="{{category}}"
+                    type="checkbox" />
+                <label for="{{category}}"> {{category}}
+                    <!-- (9) -->
+                    <!-- 
+                        here we should return the number of products 
+                        but the api doesn't return that 
+                        I was able to use get product by category 
+                        and get the number but this is a load on our 
+                        backend server and client server so ithink the back 
+                        end should return it in at the same api   
+                    -->
+                </label>
             </div>
         </div>
     </section>
     <section class="products-cards-wrapper">
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
-        <app-product-card></app-product-card>
+        <app-product-card *ngFor="let product of products$;" [product]="product"></app-product-card>
     </section>
 </div>

@@ -1,27 +1,27 @@
 <div class="product-card">
-    <div class="cover">
+    <div class="cover" [ngStyle]="{'background-image':'url(' + product.thumbnail + ')'}">
         <small>
-            - 12.96%
+            - {{product.discountPercentage}}%
         </small>
     </div>
     <div class="product-details">
-        <h3 class="product-title">iPhone 9</h3>
-        <p class="product-description">An Apple mobile which is nothing like apple.</p>
+        <h3 class="product-title">{{product.title}}</h3>
+        <p class="product-description">{{product.description.slice(0,60)}}</p>
         <span class="priceing">
-            <small class="price-before-discount"><strong>549</strong> &nbsp;USD</small>
-            <small><strong>477.85</strong> &nbsp;USD</small>
+            <small class="price-before-discount"><strong>{{product.price}}</strong> &nbsp;USD</small>
+            <small><strong>{{priceAfterDiscount}}</strong> &nbsp;USD</small>
         </span>
         <span class="info">
-            <small>Brand:<strong>Apple</strong></small>
-            <small>Category:<strong>Smartphones</strong></small>
-            <small>In stock:<strong>94</strong></small>
+            <small>Brand:<strong>{{product.brand}}</strong></small>
+            <small>Category:<strong>{{product.category}}</strong></small>
+            <small>In stock:<strong>{{product.stock}}</strong></small>
         </span>
         <span class="rating">
             <span class="star">
-                <span></span>
+                <span [ngStyle]="{width:starWidth+'px'}"></span>
             </span>
-            <strong class="rate-out-of-five">4.69</strong>
-            <small class="reviews-number">(11)</small>
+            <strong class="rate-out-of-five">{{product.rating}}</strong>
+            <small class="reviews-number">({{reviewsNumber}})</small>
         </span>
         <button class="add-to-cart">ADD TO CART</button>
     </div>
