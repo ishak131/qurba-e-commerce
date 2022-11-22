@@ -16,5 +16,4 @@ export class CartService {
   getUserCart(userId: number): Observable<CartResponse> {
     return this.http.get<CartResponse>(environment.apisURL + this.getCartByUserIdEndPoint + `/${userId}`)
   }
-
 }

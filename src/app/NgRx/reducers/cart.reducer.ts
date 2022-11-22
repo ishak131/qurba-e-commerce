@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Cart } from 'src/app/types/cart';
-import { setCart } from '../actions/cart.actions';
+import { increaseProductsNumber, setCart } from '../actions/cart.actions';
 
 export const initialState: Cart = {
     id: 0,
@@ -15,4 +15,5 @@ export const initialState: Cart = {
 export const cartReducer = createReducer(
     initialState,
     on(setCart, (_, { cart }) => ({ ...cart })),
+    on(increaseProductsNumber, (state,) => ({ ...state, totalProducts: state.totalProducts + 1 })),
 );

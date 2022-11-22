@@ -20,6 +20,8 @@ import { productResponseReducer } from './NgRx/reducers/products.reducer';
 import { userReducer } from './NgRx/reducers/user.reducer';
 import { ProfileComponent } from './components/profile/profile.component';
 import { cartReducer } from './NgRx/reducers/cart.reducer';
+import { FilterComponent } from './components/filter/filter.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -34,6 +36,8 @@ import { cartReducer } from './NgRx/reducers/cart.reducer';
     CartComponent,
     SearchComponent,
     ProfileComponent,
+    FilterComponent,
+    PaginationComponent,
   ],
 
   imports: [

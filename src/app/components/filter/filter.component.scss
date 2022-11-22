@@ -1,0 +1,23 @@
+.filter {
+    min-width: 282px;
+    padding: 12px;
+    border: 0.5px solid rgba(66, 66, 66, .3);
+    border-radius: 8px;
+    box-sizing: border-box;
+    height: fit-content;
+
+    h4 {
+        margin: 0 0 16px;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 22px;
+        color: #1E1E1E;
+    }
+
+    .checkbox {
+        align-items: center;
+        display: flex;
+        gap: 9px;
+    }
+}

@@ -1,52 +1,22 @@
-<h1 *ngIf="!searchKeyWord$" class="product-title">iPhone</h1>
-<h1 *ngIf="searchKeyWord$" class="product-title">{{searchKeyWord$}}</h1>
+<h1 *ngIf="!showSearchResultHeader" class="product-title">iPhone</h1>
+<h1 *ngIf="showSearchResultHeader" class="product-title">{{searchKeyWord}}</h1>
 
-<p *ngIf="!searchKeyWord$" class="breadcrumb">Home / Products / Smart Phones / <strong>iPhone</strong></p>
-<p *ngIf="searchKeyWord$" class="breadcrumb">Home / Products / <strong>{{searchKeyWord$}}</strong></p>
+<p *ngIf="!showSearchResultHeader" class="breadcrumb">Home / Products / Smart Phones / <strong>iPhone</strong></p>
+<p *ngIf="showSearchResultHeader" class="breadcrumb">Home / Products / <strong>{{searchKeyWord}}</strong></p>
 <div class="products">
-    <section class="filter">
-        <h4>Products </h4>
-        <div class="categories">
-            <div class="checkbox" *ngFor="let category of categories$;">
-                <input (change)="onCheckBoxChange($event)" name="category" id="{{category}}" value="{{category}}"
-                    type="checkbox" />
-                <label for="{{category}}"> {{category}}
-                    <!-- (9) -->
-                    <!-- 
-                        here we should return the number of products 
-                        but the api doesn't return that 
-                        I was able to use get product by category 
-                        and get the number but this is a load on our 
-                        backend server and client server so ithink the back 
-                        end should return it in at the same api   
-                    -->
-                </label>
-            </div>
-        </div>
-    </section>
+    <app-filter [selectedPage]="selectedPage" [searchKeyWord]="searchKeyWord" [getAllProducts]="getAllProducts">
+    </app-filter>
+
     <section class="products-and-pagination">
-        <div *ngIf="(total$ | async)" class="total-found-products">
-            <small>({{total$ | async}}) Products Found</small>
+        <div *ngIf="searchKeyWord" class="total-found-products">
+            <small>{{total}} Products Found</small>
             <small><strong>Sort By: </strong>Popularity</small>
         </div>
         <div class="products-cards-wrapper">
-            <app-product-card *ngFor="let product of ( products$ | async );" [product]="product"></app-product-card>
+            <app-product-card *ngFor="let product of products ;" [product]="product"></app-product-card>
         </div>
-        <div *ngIf="isAllProducts$ && pages$.length > 0 && !(total$ |async)" class="pagination">
-            <button class="back" [disabled]="selectedPage$ === 0" (click)="prevPage()"><img
-                    src="/assets/next-arrow.png" /></button>
-
-            <button *ngFor="let item of pages$;  index as pageIndex"
-                [ngClass]="{'selected':pageIndex === selectedPage$, 'long':isLongPagination(pageIndex) ,'doted':isDotedButton(pageIndex)} "
-                [disabled]="selectedPage$ === pageIndex || isDotedButton(pageIndex)" (click)="changePage(pageIndex)">
-
-                {{isDotedButton(pageIndex) ? '...' : pageIndex + 1}}
-
-            </button>
-
-            <button class="next" [disabled]="(selectedPage$ + 1) === pages$.length" (click)="nextPage()"><img
-                    src="/assets/next-arrow.png" /></button>
-        </div>
-
+        <app-pagination *ngIf="showPagination"  [getAllProducts]="getAllProducts"
+            [paginationPages]="paginationPages">
+        </app-pagination>
     </section>
 </div>

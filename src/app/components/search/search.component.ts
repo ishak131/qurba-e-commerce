@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { setProductsFromSearch } from 'src/app/NgRx/actions/products.actions';
+import { setProductResponse, setProductsFromSearch } from 'src/app/NgRx/actions/products.actions';
 import { AppState } from 'src/app/NgRx/selectors';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -19,13 +19,15 @@ export class SearchComponent {
   }
 
   searchProducts(): void {
-    this.productService.getProductsBySearch(this.keyword$).subscribe(({ products, total }) => {
-      let total$ = this.keyword$ ? total : 0
-      this.store.dispatch(setProductsFromSearch({ total: total$, products }))
+    //if the keyword exists search in products 
+    // else go to products page root to reload 
+    // original products
+    this.keyword$ ? this.productService.getProductsBySearch(this.keyword$).subscribe((productResponse) => {
+      this.store.dispatch(setProductResponse({ productResponse }))
       this.router.navigate(["/products"], {
         queryParams: { search: this.keyword$ },
       })
-    })
+    }) : this.router.navigate(['/products'])
   }
 
   onChangeSearchInput(event: Event): void {

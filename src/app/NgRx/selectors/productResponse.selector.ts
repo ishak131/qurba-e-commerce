@@ -9,6 +9,12 @@ export const selectFeature = (state: AppState) => state.productResponse;
 
 export const productResponseSelector = createSelector(
     selectFeature,
+    (state: ProductResponse) => state
+);
+
+
+export const productsSelector = createSelector(
+    selectFeature,
     (state: ProductResponse) => state.products
 );
 

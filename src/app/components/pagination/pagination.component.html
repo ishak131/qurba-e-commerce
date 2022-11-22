@@ -1,0 +1,13 @@
+<div *ngIf="true" class="pagination">
+    <button class="back" [disabled]="selectedPage === 0" (click)="prevPage()"><img
+            src="/assets/next-arrow.png" /></button>
+
+    <button *ngFor="let item of paginationPages;  index as pageIndex"
+        [ngClass]="{'selected':pageIndex === selectedPage, 'long':isLongPagination(pageIndex) ,'doted':isDotedButton(pageIndex)} "
+        [disabled]="selectedPage === pageIndex || isDotedButton(pageIndex)" (click)="changePage(pageIndex)">
+        {{isDotedButton(pageIndex) ? '...' : pageIndex + 1}}
+
+    </button>
+    <button class="next" [disabled]="(selectedPage + 1) === paginationPages.length" (click)="nextPage()"><img
+            src="/assets/next-arrow.png" /></button>
+</div>

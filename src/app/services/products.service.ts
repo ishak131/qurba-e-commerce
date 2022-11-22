@@ -17,8 +17,8 @@ export class ProductsService {
 
   constructor(private http: HttpClient) { }
 
-  getProductsAllProducts(limit: number = 9, skip: number = 0): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(environment.apisURL + this.getAllProductsEndPoint + `?limit=${limit}&skip=${skip}`)
+  getAllProducts(skip: number = 0): Observable<ProductResponse> {
+    return this.http.get<ProductResponse>(environment.apisURL + this.getAllProductsEndPoint + `?limit=${9}&skip=${skip}`)
   }
 
   getProductsByCategory(category: string = ""): Observable<ProductResponse> {

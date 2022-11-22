@@ -1,4 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { increaseProductsNumber } from 'src/app/NgRx/actions/cart.actions';
+import { AppState } from 'src/app/NgRx/selectors';
 import { Product } from 'src/app/types/product';
 
 @Component({
@@ -13,7 +16,14 @@ export class ProductCardComponent implements OnInit {
   starWidth: number = 0
   priceAfterDiscount: string = ""
 
-  constructor() { }
+  constructor(private store: Store<AppState>) { }
+
+  // belive me I wanted to implement it in a full right flow which updates the database 
+  // but the api doesn't really add or update any thing to the db 
+  // and I have deadlines in my current company :( :< very sad
+  addToCart() {
+    this.store.dispatch(increaseProductsNumber())
+  }
 
   ngOnInit(): void {
     // here I am calculating the width of the yellow star 
