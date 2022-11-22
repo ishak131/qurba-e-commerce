@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState, isLoggedInSelector } from 'src/app/NgRx/selectors';
+import { AppState } from 'src/app/NgRx/selectors';
+import { isLoggedInSelector } from '../../NgRx/selectors/authentication.selector';
 
 @Component({
   selector: 'app-header',

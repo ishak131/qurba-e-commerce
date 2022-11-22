@@ -17,6 +17,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { productResponseReducer } from './NgRx/reducers/products.reducer';
+import { userReducer } from './NgRx/reducers/user.reducer';
 
 
 @NgModule({
@@ -37,7 +38,11 @@ import { productResponseReducer } from './NgRx/reducers/products.reducer';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    StoreModule.forRoot({ authentication: authenticationReducer, productResponse:productResponseReducer }),
+    StoreModule.forRoot({
+      authentication: authenticationReducer,
+      productResponse: productResponseReducer,
+      user: userReducer
+    }),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

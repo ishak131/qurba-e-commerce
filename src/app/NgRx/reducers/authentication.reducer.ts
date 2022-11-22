@@ -1,13 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
+import { AuthenticationState } from 'src/app/types/authentication';
 import { login, logout } from '../actions/authentication.actions';
-import { AuthenticationState } from '../selectors';
-
-
 
 export const initialState: AuthenticationState = {
   isLoggedIn: false
 };
-
 
 export const authenticationReducer = createReducer(
   initialState,

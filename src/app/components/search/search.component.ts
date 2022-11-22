@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { setProductsFromSearch } from 'src/app/NgRx/actions/products.action';
+import { setProductsFromSearch } from 'src/app/NgRx/actions/products.actions';
 import { AppState } from 'src/app/NgRx/selectors';
 import { ProductsService } from 'src/app/services/products.service';
 

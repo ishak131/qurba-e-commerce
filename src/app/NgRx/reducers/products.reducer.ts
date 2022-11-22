@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { ProductResponse } from 'src/app/types/product';
-import { setProducts, setProductsFromGetByCategory, setProductsFromSearch } from '../actions/products.action';
+import { setProducts, setProductsFromGetByCategory, setProductsFromSearch } from '../actions/products.actions';
 
 export const initialState: ProductResponse = {
     products: [],
@@ -8,8 +8,6 @@ export const initialState: ProductResponse = {
     skip: 0,
     total: 0
 };
-
-
 
 export const productResponseReducer = createReducer(
     initialState,

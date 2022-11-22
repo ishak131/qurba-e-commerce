@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { setProducts, setProductsFromGetByCategory } from 'src/app/NgRx/actions/products.action';
+import { setProducts, setProductsFromGetByCategory } from 'src/app/NgRx/actions/products.actions';
 import { AppState } from 'src/app/NgRx/selectors';
 import { productResponseSelector, totalProductsSelector } from 'src/app/NgRx/selectors/productResponse.selector';
 import { ProductsService } from 'src/app/services/products.service';

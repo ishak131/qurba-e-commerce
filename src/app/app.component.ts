@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { login, logout } from './NgRx/actions/authentication.actions';
-import { AppState, isLoggedInSelector } from './NgRx/selectors';
+import { AppState } from './NgRx/selectors';
+import { isLoggedInSelector } from './NgRx/selectors/authentication.selector';
 
 @Component({
   selector: 'app-root',

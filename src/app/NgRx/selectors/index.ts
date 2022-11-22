@@ -1,19 +1,10 @@
-import { createSelector } from '@ngrx/store';
+import { AuthenticationState } from 'src/app/types/authentication';
 import { ProductResponse } from 'src/app/types/product';
-
-export interface AuthenticationState {
-    isLoggedIn: boolean;
-}
-
+import { User } from 'src/app/types/user';
 
 export interface AppState {
     authentication: AuthenticationState;
     productResponse: ProductResponse;
+    user: User;
 }
 
-export const selectFeature = (state: AppState) => state.authentication;
-
-export const isLoggedInSelector = createSelector(
-    selectFeature,
-    (state: AuthenticationState) => state.isLoggedIn
-);
