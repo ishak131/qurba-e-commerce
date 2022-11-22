@@ -6,11 +6,13 @@ import { ProductResponse } from '../types/product';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ProductsService {
 
   private getAllProductsEndPoint = "/products";
   private getAllCategoriesEndPoint = "/products/categories";
   private getProductsByCategoryEndPoint = "/products/category";
+  private getProductsBySearchEndPoint = "/products/search?q=";
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +22,10 @@ export class ProductsService {
 
   getProductsByCategory(category: string = "") {
     return this.http.get<ProductResponse>(environment.apisURL + this.getProductsByCategoryEndPoint + `/${category}`)
+  }
+
+  getProductsBySearch(keyword: string = "") {
+    return this.http.get<ProductResponse>(environment.apisURL + this.getProductsBySearchEndPoint + keyword)
   }
 
   getCategories() {

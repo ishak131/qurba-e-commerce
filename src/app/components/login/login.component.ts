@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService, private router: Router, private store: Store<AppState>) {
     this.isLoggedIn$ = this.store.pipe(select(isLoggedInSelector));
-  }
+  } 
 
   ngOnInit(): void {
     // here we are preventing user from making login again 
