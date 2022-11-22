@@ -8,6 +8,7 @@ export const userSelector = createSelector(
     selectFeature,
     (state: User) => state
 );
+
 export const userIdSelector = createSelector(
     selectFeature,
     (state: User) => state.id

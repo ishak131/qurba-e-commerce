@@ -3,7 +3,7 @@ import { User } from 'src/app/types/user';
 import { setUser } from '../actions/user.actions';
 
 export const initialState: User = {
-    id: "",
+    id: 0,
     username: "",
     email: "",
     firstName: "",

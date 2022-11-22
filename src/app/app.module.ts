@@ -18,6 +18,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { SearchComponent } from './components/search/search.component';
 import { productResponseReducer } from './NgRx/reducers/products.reducer';
 import { userReducer } from './NgRx/reducers/user.reducer';
+import { ProfileComponent } from './components/profile/profile.component';
+import { cartReducer } from './NgRx/reducers/cart.reducer';
 
 
 @NgModule({
@@ -31,6 +33,7 @@ import { userReducer } from './NgRx/reducers/user.reducer';
     HomeComponent,
     CartComponent,
     SearchComponent,
+    ProfileComponent,
   ],
 
   imports: [
@@ -41,7 +44,8 @@ import { userReducer } from './NgRx/reducers/user.reducer';
     StoreModule.forRoot({
       authentication: authenticationReducer,
       productResponse: productResponseReducer,
-      user: userReducer
+      user: userReducer,
+      cart: cartReducer,
     }),
     // Instrumentation must be imported after importing StoreModule (config is optional)
     StoreDevtoolsModule.instrument({
