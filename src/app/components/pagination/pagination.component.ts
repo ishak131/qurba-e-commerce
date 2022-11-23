@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/NgRx/selectors';
@@ -9,10 +9,11 @@ import { ProductsService } from 'src/app/services/products.service';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.scss']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent {
 
   @Input() paginationPages: number[] = [];
   searchKeyWord: string = ""
+  filter: string = ""
   @Input() getAllProducts: () => void = () => { }
   selectedPage: number = 0;
 
@@ -20,7 +21,8 @@ export class PaginationComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe(params => {
       let selectedPageURLParameter = parseInt(params['selectedPage'])
       this.searchKeyWord = params['search']
-      if (!this.searchKeyWord)
+      this.filter = params['filter']
+      if (!this.searchKeyWord && !this.filter)
         isNaN(selectedPageURLParameter) ? this.replaceQueryParamsAndRunGetAllProducts() : this.selectedPage = selectedPageURLParameter;
     });
   }
@@ -78,8 +80,5 @@ export class PaginationComponent implements OnInit {
     return false
   }
 
-  ngOnInit(): void {
-
-  }
 
 }

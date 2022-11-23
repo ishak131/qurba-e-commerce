@@ -23,15 +23,15 @@ export class ProductsComponent implements OnInit {
   skip: number = 0;
   selectedPage: number = 0;
   searchKeyWord: string = ""
-  showSearchResultHeader: boolean = Boolean(this.searchKeyWord)
   paginationPages: number[] = []
-  showPagination: boolean = !(this.total === this.limit)
+  filter: string = ""
 
-  
   constructor(private productsService: ProductsService, private store: Store<AppState>, private activatedRoute: ActivatedRoute) {
     this.productResponse$ = this.store.pipe(select(productResponseSelector));
+
     this.activatedRoute.queryParams.subscribe(params => {
       this.searchKeyWord = params['search'];
+      this.filter = params['filter'];
       let selectedPageURLParameter = parseInt(params['selectedPage'])
       this.selectedPage = isNaN(selectedPageURLParameter) ? 0 : selectedPageURLParameter;
     });
@@ -42,7 +42,7 @@ export class ProductsComponent implements OnInit {
     let pages = Math.floor(this.total / limitForAllProductsApi)
     if (this.total % limitForAllProductsApi)
       pages += 1
-    pages && (this.paginationPages = Array(pages).fill(0))    
+    pages && (this.paginationPages = Array(pages).fill(0))
   }
 
   getAllProducts() {
@@ -53,13 +53,12 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllProducts();
+    (!this.searchKeyWord && !this.filter) && this.getAllProducts();
     this.productResponse$.subscribe(({ products, total, limit, skip }) => {
       this.products = products
       this.limit = limit
       this.total = total
       this.skip = skip
-      this.showPagination = !(limit === total)
       this.calculatePagesNumberAndGeneratePaginationPagesArray()
     })
   }

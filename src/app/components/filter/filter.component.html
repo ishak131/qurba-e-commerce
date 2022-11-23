@@ -2,8 +2,8 @@
     <h4>Products </h4>
     <div class="categories">
         <div class="checkbox" *ngFor="let category of categories$;">
-            <input (change)="onCheckBoxChange($event)" name="category" id="{{category}}" value="{{category}}"
-                type="checkbox" />
+            <input [checked]="isChecked(category)" (change)="onCheckBoxChange($event)" name="category" id="{{category}}"
+                value="{{category}}" type="checkbox" />
             <label for="{{category}}"> {{category}}
                 (9)
                 <!-- 

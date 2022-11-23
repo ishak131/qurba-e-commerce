@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { setProductResponse, setProductsFromSearch } from 'src/app/NgRx/actions/products.actions';
+import { setProductResponse } from 'src/app/NgRx/actions/products.actions';
 import { AppState } from 'src/app/NgRx/selectors';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -12,27 +12,41 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class SearchComponent {
 
-  keyword$: string = ""
-
-  constructor(private productService: ProductsService, private store: Store<AppState>, private router: Router) {
+  searchKeyWord: string = ""
+  searchKeyWordInputValue: string = ""
+  constructor(private productService: ProductsService, private store: Store<AppState>, private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
   searchProducts(): void {
-    //if the keyword exists search in products 
-    // else go to products page root to reload 
-    // original products
-    this.keyword$ ? this.productService.getProductsBySearch(this.keyword$).subscribe((productResponse) => {
+    this.productService.getProductsBySearch(this.searchKeyWord).subscribe((productResponse) => {
       this.store.dispatch(setProductResponse({ productResponse }))
+    })
+  }
+
+  updateSearchParameter() {
+    this.searchKeyWordInputValue ? this.router.navigate(["/products"], {
+      queryParams: { search: this.searchKeyWordInputValue },
+    }).then(() => {
+      window.location.reload()
+    }) :
       this.router.navigate(["/products"], {
-        queryParams: { search: this.keyword$ },
+        queryParams: { selectedPage: 0 },
+      }).then(() => {
+        window.location.reload()
       })
-    }) : this.router.navigate(['/products'])
   }
 
   onChangeSearchInput(event: Event): void {
     let target = event.target as HTMLInputElement
-    this.keyword$ = target.value
+    this.searchKeyWordInputValue = target.value
+  }
+
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.searchKeyWord = params['search']
+      this.searchKeyWord && this.searchProducts()
+    });
   }
 
 }

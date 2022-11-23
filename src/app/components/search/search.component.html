@@ -1,6 +1,7 @@
 <form class="search">
-    <button (click)="searchProducts()" type="submit">
+    <button (click)="updateSearchParameter()" type="submit">
         <img src="/assets/search.png" />
     </button>
-    <input required (change)="onChangeSearchInput($event)" placeholder="search" type="search" />
+    <input   (change)="onChangeSearchInput($event)" placeholder="search"
+        type="search" />
 </form>

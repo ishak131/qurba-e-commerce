@@ -1,8 +1,8 @@
-<h1 *ngIf="!showSearchResultHeader" class="product-title">iPhone</h1>
-<h1 *ngIf="showSearchResultHeader" class="product-title">{{searchKeyWord}}</h1>
+<h1 *ngIf="!searchKeyWord" class="product-title">iPhone</h1>
+<h1 *ngIf="searchKeyWord" class="product-title">{{searchKeyWord}}</h1>
 
-<p *ngIf="!showSearchResultHeader" class="breadcrumb">Home / Products / Smart Phones / <strong>iPhone</strong></p>
-<p *ngIf="showSearchResultHeader" class="breadcrumb">Home / Products / <strong>{{searchKeyWord}}</strong></p>
+<p *ngIf="!searchKeyWord" class="breadcrumb">Home / Products / Smart Phones / <strong>iPhone</strong></p>
+<p *ngIf="searchKeyWord" class="breadcrumb">Home / Products / <strong>{{searchKeyWord}}</strong></p>
 <div class="products">
     <app-filter [selectedPage]="selectedPage" [searchKeyWord]="searchKeyWord" [getAllProducts]="getAllProducts">
     </app-filter>
@@ -15,7 +15,7 @@
         <div class="products-cards-wrapper">
             <app-product-card *ngFor="let product of products ;" [product]="product"></app-product-card>
         </div>
-        <app-pagination *ngIf="showPagination"  [getAllProducts]="getAllProducts"
+        <app-pagination *ngIf="!searchKeyWord && !filter" [getAllProducts]="getAllProducts"
             [paginationPages]="paginationPages">
         </app-pagination>
     </section>
